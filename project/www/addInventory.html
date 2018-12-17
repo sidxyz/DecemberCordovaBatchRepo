@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://37b50ec9.ngrok.io/ data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <title>Add Inventory Screen</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Add Inventory Screen</h1>
+            <form>
+                <div class="form-group">
+                  <label for="productName">Product Name</label>
+                  <input type="text" class="form-control" id="productName" placeholder="Enter product name">
+                </div>
+                <div class="form-group">
+                    <label for="productDescription">Product Description</label>
+                    <textarea class="form-control" id="productDescription" rows="3"></textarea>
+                  </div>
+                <div class="form-group">
+                  <label for="productDimension">Product Dimensions</label>
+                  <select class="form-control" id="productDimension">
+                    <option value="1024 x 2024">1024 x 2024</option>
+                    <option value="800 x 600">800 x 600</option>
+                    <option value="4096 x 8292">4096 x 8292</option>
+                    <option value="100 x 400">100 x 400</option>
+                    <option value="5 x 20">5 x 20</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="productColor">Product Color</label>
+                  <select multiple class="form-control" id="productColor">
+                    <option value="Violet">Violet</option>
+                    <option value="Indigo">Indigo</option>
+                    <option value="Blue">Blue</option>
+                    <option value="Green">Green</option>
+                    <option value="Yellow">Yellow</option>
+                    <option value="Orange">Orange</option>
+                    <option value="Red">Red</option>
+                  </select>
+                </div>
+                <button type="button" class="btn btn-primary" id="submitBtn">Add Product</button>
+                
+              </form>
+            
+        </div>
+        
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/popper.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/addInventory.js"></script>
+    </body>
+</html>
