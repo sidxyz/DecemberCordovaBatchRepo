@@ -36,8 +36,18 @@ function submitFunction()
         productColor : localStorage.getItem('productColor'),
     }
     
-    $.post(baseUrl+'/addProduct',postData,callBackFunction);
+    //$.post(baseUrl+'/addProduct',postData,callBackFunction);
 
+    $.ajax(
+        {
+            url:baseUrl+'/addProduct',
+            type:'POST',
+            data:JSON.stringify(postData),
+            success:callBackFunction,
+            contentType:'application/json'
+        }
+    );
+    console.log(postData);
 }
 
 function callBackFunction(responseData,status,xhr)

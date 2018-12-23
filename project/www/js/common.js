@@ -1,5 +1,5 @@
 var localStorage = window.localStorage;
-var baseUrl = 'https://58883ac1.ngrok.io';
+var baseUrl = 'https://8e28bab0.ngrok.io';
 var contentOfSecurityPolicy = `default-src 'self' 
  `+baseUrl+` 
  data: gap: https://ssl.gstatic.com 'unsafe-eval';

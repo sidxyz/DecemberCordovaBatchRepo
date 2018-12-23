@@ -46,15 +46,25 @@ function submitFunction()
         productDimension : productDimension,
         productColor : productColor
     }
-    console.log(postData);
-    $.post(baseUrl+'/updateProductData',postData,updateCallBackFunction);
+    console.log(JSON.stringify(postData));
+    //$.post(baseUrl+'/updateProductData',postData,updateCallBackFunction);
+
+    $.ajax(
+        {
+            url:baseUrl+'/updateProductData',
+            type:'POST',
+            data:JSON.stringify(postData),
+            success:updateCallBackFunction,
+            contentType:'application/json'
+        }
+    );
 
 }
 
 function updateCallBackFunction(responseData,status,xhr)
 {
     console.log("server response data is = "+responseData+" status = "+status+" xhr ="+xhr);
-   // window.location = 'showProductsFromDatabase.html';
+    window.location = 'showProductsFromDatabase.html';
 }
 
 app.initialize();

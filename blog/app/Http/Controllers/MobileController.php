@@ -16,7 +16,9 @@ class MobileController extends Controller
     {
     	try 
     	{
-    		 $requestArray = $request->all();
+			 $requestArray = $request->all();
+			 
+			//dd($requestArray);
 	    	
 	    	 $product = new Product;
 	    	 $product['name'] = $requestArray['productName'];
@@ -84,11 +86,12 @@ class MobileController extends Controller
 		try
 		{
 			$requestArray = $request->all();
-	    	dd($requestArray);
+	    	//dd($requestArray);
 			$product = new Product;
 			$productId = (int)$requestArray["id"];
 
-			$product = $product->where('id',$productId);
+			$product = $product->where('id',$productId)->get();
+			$product = $product[0];
 
 			$product['name'] = $requestArray['productName'];
 			$product['description'] = $requestArray['productDescription'];
