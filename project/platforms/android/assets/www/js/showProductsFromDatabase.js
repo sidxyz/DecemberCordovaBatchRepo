@@ -17,6 +17,7 @@ function callBackFunction(responseData,status,xhr)
     var productsArray = responseData;
     var htmlContent =` `;
     var bodyElement = document.querySelector('#productTableBody');
+    var baseUrl = localStorage.getItem('baseUrl');
     for(var i =0 ;i<productsArray.length;i++)
     {        
         var newTrTag = document.createElement('tr');
@@ -44,19 +45,21 @@ function callBackFunction(responseData,status,xhr)
 
         var tdRowEditTag = document.createElement('td');
         var aRowEditTag =  document.createElement('a');
-        //aRowEditTag.textContent = "&#9998;";
         aRowEditTag.textContent = "edit";
+        aRowEditTag.id=productsArray[i].id;
+        aRowEditTag.onclick=function(){
+            localStorage.setItem('EditInventoryId',this.id);
+            window.location = "editInventory.html";
+        };
         tdRowEditTag.appendChild(aRowEditTag);
         newTrTag.appendChild(tdRowEditTag);
 
         var tdRowDeleteTag = document.createElement('td');
         var aRowDeleteTag =  document.createElement('a');
-        //aRowDeleteTag.textContent = "&#10799;";
         aRowDeleteTag.textContent = "delete";
         aRowDeleteTag.id=productsArray[i].id;
-        aRowDeleteTag.onclick=function(){
-            console.log("hello");
-            var baseUrl = localStorage.getItem('baseUrl');
+        aRowDeleteTag.onclick=function()
+        {
             $.get(baseUrl+'/deleteProduct/'+this.id,deleteCallBackFunction);
         };
         tdRowDeleteTag.appendChild(aRowDeleteTag);
@@ -78,12 +81,6 @@ function callBackFunction(responseData,status,xhr)
     
     //bodyElement.innerHTML = htmlContent;
 }
-
-// function deleteProduct()
-// {
-//     console.log("hello");
-    
-// }
 
 function deleteCallBackFunction(responseData,status,xhr)
 {

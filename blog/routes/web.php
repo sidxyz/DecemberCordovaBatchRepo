@@ -64,6 +64,10 @@ Route::get('/showAllProducts','MobileController@showAllProducts');
 
 Route::get('/deleteProduct/{id}','MobileController@deleteProduct');
 
+Route::get('/getProductInfoById/{id}','MobileController@getProductInfoById');
+
+Route::post('/updateProductData','MobileController@updateProductData');
+
 
 
 
