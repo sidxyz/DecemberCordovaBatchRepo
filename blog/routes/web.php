@@ -54,9 +54,15 @@ Route::post('/updateServicesData','HomeController@updateServicesData');
 
 Route::post('/addReview','HomeController@addReview');
 
+//routes for mobile apis begin below
+
 Route::get('/showAppName','MobileController@showAppName');
 
 Route::post('/addProduct','MobileController@addProduct');
+
+Route::get('/showAllProducts','MobileController@showAllProducts');
+
+Route::get('/deleteProduct/{id}','MobileController@deleteProduct');
 
 
 

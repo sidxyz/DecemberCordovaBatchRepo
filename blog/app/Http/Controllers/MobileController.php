@@ -30,7 +30,36 @@ class MobileController extends Controller
     	} 
     	catch (Exception $e) 
     	{
-    		return "product addition Failed! Exception is =".$e;	
+    		return "product addition Failed! Exception is = ".$e;	
     	}
     }
+
+    public function showAllProducts()
+    {
+		try
+		{
+			$product = Product::All(); 
+        	$productsArray = $product->all();    
+        	return $productsArray;
+		}
+		catch(Exception $e)
+		{
+			return "product display Failed! Exception is = ".$e;	
+		}
+        
+	}
+	
+	public function deleteProduct($id)
+	{
+		try
+		{
+			$id = (int)$id;
+			Product::destroy($id);
+			return "product Deleted Successfully";
+		}
+		catch(Exception $e)
+		{
+			return "product deletion Failed! Exception is = ".$e;	
+		}
+	}
 }

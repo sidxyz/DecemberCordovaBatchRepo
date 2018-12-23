@@ -19,13 +19,14 @@ var app = {
             productColor : localStorage.getItem('productColor'),
         }
         
-        $.post('https://37b50ec9.ngrok.io/addProduct',postData,callBackFunction);
+        $.post('https://685ab211.ngrok.io/addProduct',postData,callBackFunction);
     },
 };
 
 function callBackFunction(responseData,status,xhr)
 {
     console.log("server response data is = "+responseData+" status = "+status+" xhr ="+xhr);
+    window.location = 'showProductsFromDatabase.html';
 }
 app.initialize();
 
