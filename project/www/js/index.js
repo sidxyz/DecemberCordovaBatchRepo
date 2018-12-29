@@ -33,10 +33,31 @@ var app = {
         myContact.phoneNumbers = phoneNumbersArray;
 
         //saving to the phone
-        myContact.save(contactSuccessCallBack,contactErrorCallBack);
+        //myContact.save(contactSuccessCallBack,contactErrorCallBack);
 
         //to check if phone supports fingerprint or not
         Fingerprint.isAvailable(isAvailableSuccess, isAvailableError);
+
+        var cameraOptions = {
+            "quality":100,
+            "destinationType":Camera.DestinationType.DATA_URL,
+            "sourceType":Camera.PictureSourceType.CAMERA,
+            "allowEdit":true,
+            "encodingType":Camera.EncodingType.PNG,
+            "targetWidth":100,
+            "targetHeight":100,
+            "correctOrientation":true,
+            "saveToPhotoAlbum":true,
+            "cameraDirection":Camera.Direction.FRONT
+        }
+
+        //code to start camera
+        //navigator.camera.getPicture(cameraSuccessCallBack, cameraErrorCallBack, cameraOptions);
+
+        //adding event listener to send sms button click
+        // var sendButton = document.querySelector('#smsButtonId');
+        // sendButton.addEventListener("click",sendSMS);
+
     },
 
     // Update DOM on a Received Event
@@ -102,6 +123,43 @@ function contactSuccessCallBack(){
   function isAvailableError(message) {
     alert("finger print is not available, message = "+message);
   } 
+
+  function cameraSuccessCallBack(imageData)
+  {
+    var image = document.getElementById('myImage');
+    image.src = "data:image/jpeg;base64," + imageData;  
+  }
+
+  function cameraErrorCallBack(err)
+  {
+    alert('Camera plugin Failed because: ' + err);
+  }
+
+  function sendSMS()
+  {
+    var number = document.getElementById('numberTxt').value.toString(); /* iOS: ensure number is actually a string */
+    var message = document.getElementById('messageTxt').value;
+    console.log("number=" + number + ", message= " + message);
+ 
+    //CONFIGURATION
+    var options = {
+        replaceLineBreaks: false, // true to replace \n by a new line, false by default
+        android: {
+           // intent: 'INTENT'  // send SMS with the native android SMS messaging
+            intent: '' // send SMS without opening any other app
+        }
+    };
+ 
+        var success = function () 
+        { 
+            alert('Message sent successfully'); 
+        };
+        var error = function (e) 
+        { 
+            alert('Message Failed:' + e); 
+        };
+        sms.send(number, message, options, success, error);
+  }
 
 app.initialize();
 

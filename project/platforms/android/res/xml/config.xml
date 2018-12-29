@@ -10,6 +10,12 @@
     <feature name="Fingerprint">
         <param name="android-package" value="de.niklasmerz.cordova.fingerprint.Fingerprint" />
     </feature>
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <feature name="Sms">
+        <param name="android-package" value="com.cordova.plugins.sms.Sms" />
+    </feature>
     <name>FirstApp</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.

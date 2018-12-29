@@ -2,10 +2,9 @@ var localStorage = window.localStorage;
 var baseUrl = 'https://8e28bab0.ngrok.io';
 var contentOfSecurityPolicy = `default-src 'self' 
  `+baseUrl+` 
- data: gap: https://ssl.gstatic.com 'unsafe-eval';
+ data: gap: ms-appdata: https://ssl.gstatic.com 'unsafe-eval';
  style-src 'self' 'unsafe-inline'; 
- media-src *; 
- img-src 'self' data: content:;`;
+ media-src *; `;
 
 localStorage.setItem('baseUrl',baseUrl);
 localStorage.setItem('contentSecurityPolicy',contentOfSecurityPolicy);

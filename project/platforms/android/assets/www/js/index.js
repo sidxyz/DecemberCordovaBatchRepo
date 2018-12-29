@@ -11,25 +11,49 @@ var app = {
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
         var baseUrl = localStorage.getItem('baseUrl');
+
+        //to check if contact plugin works
         console.log(navigator.contacts);
+
+        //code to fetch all contacts
         var options = new ContactFindOptions();
         options.filter = "";
         options.multiple = true;
         var filter = ["displayName", "addresses"];
         navigator.contacts.find(filter, onSuccess, onError, options);
 
+        //code to create new contact
         var myContact = navigator.contacts.create({"displayName": "MeFreelancer"});
         var phoneNumbersArray = [];
-        
+
+        //adding multiple phone numbers to the contact
         phoneNumbersArray[0] = new ContactField('work', '768-555-1234', false);
-        phoneNumbersArray[1] = new ContactField('mobile', '999-555-5432', true); // preferred number
+        phoneNumbersArray[1] = new ContactField('mobile', '999-555-5432', true);
         phoneNumbersArray[2] = new ContactField('home', '203-555-7890', false);
         myContact.phoneNumbers = phoneNumbersArray;
-       // myContact.save(contactSuccessCallBack,contactErrorCallBack);
 
-       Fingerprint.isAvailable(isAvailableSuccess, isAvailableError);
- 
-       
+        //saving to the phone
+        //myContact.save(contactSuccessCallBack,contactErrorCallBack);
+
+        //to check if phone supports fingerprint or not
+        Fingerprint.isAvailable(isAvailableSuccess, isAvailableError);
+
+        var cameraOptions = {
+            "quality":100,
+            "destinationType":Camera.DestinationType.DATA_URL,
+            "sourceType":Camera.PictureSourceType.CAMERA,
+            "allowEdit":true,
+            "encodingType":Camera.EncodingType.PNG,
+            "targetWidth":100,
+            "targetHeight":100,
+            "correctOrientation":true,
+            "saveToPhotoAlbum":true,
+            "cameraDirection":Camera.Direction.FRONT
+        }
+
+        //navigator.camera.getPicture(cameraSuccessCallBack, cameraErrorCallBack, cameraOptions);
+        var sendButton = document.querySelector('#smsButtonId');
+        sendButton.addEventListener("click",sendSMS);
 
     },
 
@@ -59,7 +83,7 @@ function onSuccess(contacts)
 };
  
 function onError(contactError) {
-    alert('onError!');
+    alert('Error While fetching all contacts! Error message ='+contactError);
 };
 
 function contactSuccessCallBack(){
@@ -79,7 +103,7 @@ function contactSuccessCallBack(){
     Fingerprint.show({
         clientId: "Fingerprint-Demo",
         clientSecret: "password", //Only necessary for Android
-        disableBackup:"true"
+        disableBackup:"true" //To disable backup method like pin or password if you dont want fingerprint auth
       },fingerPrintSuccessCallback, fingerPrintErrorCallback);
   }
 
@@ -97,6 +121,42 @@ function contactSuccessCallBack(){
     alert("finger print is not available, message = "+message);
   } 
 
+  function cameraSuccessCallBack(imageData)
+  {
+    var image = document.getElementById('myImage');
+    image.src = "data:image/jpeg;base64," + imageData;  
+  }
+
+  function cameraErrorCallBack(err)
+  {
+    alert('Camera plugin Failed because: ' + err);
+  }
+
+  function sendSMS()
+  {
+    var number = document.getElementById('numberTxt').value.toString(); /* iOS: ensure number is actually a string */
+    var message = document.getElementById('messageTxt').value;
+    console.log("number=" + number + ", message= " + message);
+ 
+    //CONFIGURATION
+    var options = {
+        replaceLineBreaks: false, // true to replace \n by a new line, false by default
+        android: {
+           // intent: 'INTENT'  // send SMS with the native android SMS messaging
+            intent: '' // send SMS without opening any other app
+        }
+    };
+ 
+        var success = function () 
+        { 
+            alert('Message sent successfully'); 
+        };
+        var error = function (e) 
+        { 
+            alert('Message Failed:' + e); 
+        };
+        sms.send(number, message, options, success, error);
+  }
 
 app.initialize();
 
