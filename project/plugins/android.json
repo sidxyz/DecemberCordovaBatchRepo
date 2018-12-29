@@ -9,6 +9,12 @@
   "installed_plugins": {
     "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "io.itlh.firstapp"
+    },
+    "cordova-plugin-contacts": {
+      "PACKAGE_NAME": "io.itlh.firstapp"
+    },
+    "cordova-plugin-fingerprint-aio": {
+      "PACKAGE_NAME": "io.itlh.firstapp"
     }
   },
   "dependent_plugins": {}
