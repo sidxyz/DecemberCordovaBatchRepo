@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// use Intervention\Image\Facades\Image;
 use App\Product;
 
 class MobileController extends Controller
@@ -24,7 +25,15 @@ class MobileController extends Controller
 	    	 $product['name'] = $requestArray['productName'];
 	    	 $product['description'] = $requestArray['productDescription'];
 	    	 $product['dimension'] = $requestArray['productDimension'];
-	    	 $product['color'] = $requestArray['productColor'];
+			 $product['color'] = $requestArray['productColor'];
+			 $imageExtension = $requestArray['imageExtension'];
+
+			 $imageFullName = time().".".$imageExtension;
+			 $base64ImageData = $requestArray['productImage'];
+			 $fullPath = public_path('images')."/".$imageFullName;
+			 \File::put($fullPath, base64_decode($base64ImageData));
+			 //request()->productImage->move(,$imageFullName);
+			 $product['image_url']=$fullPath;
 
 	    	 $product->save();
 

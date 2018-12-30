@@ -36,7 +36,7 @@ var app = {
         //myContact.save(contactSuccessCallBack,contactErrorCallBack);
 
         //to check if phone supports fingerprint or not
-        Fingerprint.isAvailable(isAvailableSuccess, isAvailableError);
+        //Fingerprint.isAvailable(isAvailableSuccess, isAvailableError);
 
         var cameraOptions = {
             "quality":100,

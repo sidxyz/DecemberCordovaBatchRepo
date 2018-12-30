@@ -32,7 +32,11 @@ class Controller extends BaseController
 
     public function addService(Request $request)
     {
-    	$service = Service::Create($request->all());
+        // $imageExtension =request()->image->getClientOriginalExtension();
+        // $imageFullName = time().".".$imageExtension;
+        // request()->image->move(public_path('images'),$imageFullName);
+        
+        // $service = Service::Create($request->all());
         return redirect('services');
     }
 

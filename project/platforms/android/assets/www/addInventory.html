@@ -12,7 +12,7 @@
         <div class="container">
             <a href="index.html">Back to Index</a>
             <h1>Add Inventory Screen</h1>
-            <form>
+            
                 <div class="form-group">
                   <label for="productName">Product Name</label>
                   <input type="text" class="form-control" id="productName" placeholder="Enter product name">
@@ -20,7 +20,12 @@
                 <div class="form-group">
                     <label for="productDescription">Product Description</label>
                     <textarea class="form-control" id="productDescription" rows="3"></textarea>
-                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="productDescription">Product Image</label>
+                  <button id="productImageBtn">Click here to upload</button>
+                  <img src="" id="uploadedImage">
+              </div>
                 <div class="form-group">
                   <label for="productDimension">Product Dimensions</label>
                   <select class="form-control" id="productDimension">
@@ -45,7 +50,7 @@
                 </div>
                 <button type="button" class="btn btn-primary" id="submitBtn">Add Product</button>
                 
-              </form>
+              
             
         </div>
         <script type="text/javascript" src="js/common.js"></script>

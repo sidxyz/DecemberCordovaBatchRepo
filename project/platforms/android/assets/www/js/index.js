@@ -36,7 +36,7 @@ var app = {
         //myContact.save(contactSuccessCallBack,contactErrorCallBack);
 
         //to check if phone supports fingerprint or not
-        Fingerprint.isAvailable(isAvailableSuccess, isAvailableError);
+        //Fingerprint.isAvailable(isAvailableSuccess, isAvailableError);
 
         var cameraOptions = {
             "quality":100,
@@ -51,9 +51,12 @@ var app = {
             "cameraDirection":Camera.Direction.FRONT
         }
 
+        //code to start camera
         //navigator.camera.getPicture(cameraSuccessCallBack, cameraErrorCallBack, cameraOptions);
-        var sendButton = document.querySelector('#smsButtonId');
-        sendButton.addEventListener("click",sendSMS);
+
+        //adding event listener to send sms button click
+        // var sendButton = document.querySelector('#smsButtonId');
+        // sendButton.addEventListener("click",sendSMS);
 
     },
 

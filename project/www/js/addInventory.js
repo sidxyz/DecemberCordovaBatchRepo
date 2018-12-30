@@ -9,10 +9,45 @@ var app = {
         var submitBtn = document.querySelector('#submitBtn');
         submitBtn.addEventListener("click", submitFunction);
 
+        var uploadImageBtn = document.querySelector('#productImageBtn');
+        uploadImageBtn.addEventListener("click",uploadImageFunction);
+
     },
 };
 
 var localStorage = window.localStorage;
+
+function uploadImageFunction()
+{
+    var cameraOptions = {
+        "quality":100,
+        "destinationType":Camera.DestinationType.DATA_URL,
+        "sourceType":Camera.PictureSourceType.CAMERA,
+        "allowEdit":true,
+        "encodingType":Camera.EncodingType.PNG,
+        "targetWidth":100,
+        "targetHeight":100,
+        "correctOrientation":true,
+        "saveToPhotoAlbum":true,
+        "cameraDirection":Camera.Direction.FRONT
+    }
+
+    navigator.camera.getPicture(cameraSuccessCallBack, cameraErrorCallBack, cameraOptions);
+}    
+
+function cameraSuccessCallBack(imageData)
+  {
+    console.log("in success callback of camera");
+    var image = document.getElementById('uploadedImage');
+    image.src = "data:image/jpeg;base64," + imageData;  
+    console.log("image data ="+imageData);
+    localStorage.setItem("uploadedImageData",imageData);
+  }
+
+  function cameraErrorCallBack(err)
+  {
+    alert('Camera plugin Failed because: ' + err);
+  }
 
 function submitFunction()
 {
@@ -22,6 +57,7 @@ function submitFunction()
     var productDescription = document.querySelector('#productDescription').value;
     var productDimension = document.querySelector('#productDimension').value;
     var productColor = document.querySelector('#productColor').value;
+    var productImage = localStorage.getItem('uploadedImageData');
 
     console.log(" "+productName+" "+productDescription+" "+productDimension+" "+productColor);
     localStorage.setItem('productName',productName);
@@ -34,6 +70,8 @@ function submitFunction()
         productDescription : localStorage.getItem('productDescription'),
         productDimension : localStorage.getItem('productDimension'),
         productColor : localStorage.getItem('productColor'),
+        imageExtension : 'png',
+        productImage : productImage
     }
     
     //$.post(baseUrl+'/addProduct',postData,callBackFunction);
