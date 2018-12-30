@@ -14,6 +14,8 @@
     "cordova-plugin-camera": "^4.0.3",
     "cordova-plugin-contacts": "^3.0.1",
     "cordova-plugin-fingerprint-aio": "^1.5.0",
+    "cordova-plugin-geolocation": "^4.0.1",
+    "cordova-plugin-request-location-accuracy": "^2.2.3",
     "cordova-plugin-whitelist": "^1.3.3",
     "cordova-sms-plugin": "^1.0.0",
     "web": "0.0.2"
@@ -24,7 +26,9 @@
       "cordova-plugin-contacts": {},
       "cordova-plugin-fingerprint-aio": {},
       "cordova-plugin-camera": {},
-      "cordova-sms-plugin": {}
+      "cordova-sms-plugin": {},
+      "cordova-plugin-request-location-accuracy": {},
+      "cordova-plugin-geolocation": {}
     },
     "platforms": [
       "android"

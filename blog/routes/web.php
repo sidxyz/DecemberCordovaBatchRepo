@@ -68,6 +68,8 @@ Route::get('/getProductInfoById/{id}','MobileController@getProductInfoById');
 
 Route::post('/updateProductData','MobileController@updateProductData');
 
+Route::post('/api/login','MobileController@login');
+
 
 
 

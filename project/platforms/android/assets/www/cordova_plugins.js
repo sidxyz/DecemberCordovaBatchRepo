@@ -124,6 +124,28 @@ module.exports = [
     "clobbers": [
       "window.sms"
     ]
+  },
+  {
+    "id": "cordova-plugin-request-location-accuracy.RequestLocationAccuracy",
+    "file": "plugins/cordova-plugin-request-location-accuracy/www/android/RequestLocationAccuracy.js",
+    "pluginId": "cordova-plugin-request-location-accuracy",
+    "clobbers": [
+      "cordova.plugins.locationAccuracy"
+    ]
+  },
+  {
+    "id": "cordova-plugin-geolocation.geolocation",
+    "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
+    "pluginId": "cordova-plugin-geolocation",
+    "clobbers": [
+      "navigator.geolocation"
+    ]
+  },
+  {
+    "id": "cordova-plugin-geolocation.PositionError",
+    "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+    "pluginId": "cordova-plugin-geolocation",
+    "runs": true
   }
 ];
 module.exports.metadata = 
@@ -133,7 +155,9 @@ module.exports.metadata =
   "cordova-plugin-contacts": "3.0.1",
   "cordova-plugin-fingerprint-aio": "1.5.0",
   "cordova-plugin-camera": "4.0.3",
-  "cordova-sms-plugin": "1.0.0"
+  "cordova-sms-plugin": "1.0.0",
+  "cordova-plugin-request-location-accuracy": "2.2.3",
+  "cordova-plugin-geolocation": "4.0.1"
 };
 // BOTTOM OF METADATA
 });

@@ -116,4 +116,25 @@ class MobileController extends Controller
 			return "Updating product info Failed! Exception is = ".$e;	
 		}
 	}
+	public function login(Request $request)
+	{
+		$requestArray = $request->all();
+		$valid = false;
+
+		//do something better to verify if username and password are valid
+		if($requestArray["username"]=="admin" && $requestArray["password"]=="admin")
+		$valid = true;
+
+		if($valid)
+		{
+			return env('APP_KEY');
+		}
+		else
+		{
+			return 'login failed';
+		}
+
+	}
+
+
 }

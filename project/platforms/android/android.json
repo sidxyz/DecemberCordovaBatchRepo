@@ -27,6 +27,10 @@
             {
               "xml": "<feature name=\"Sms\"><param name=\"android-package\" value=\"com.cordova.plugins.sms.Sms\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"Geolocation\"><param name=\"android-package\" value=\"org.apache.cordova.geolocation.Geolocation\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -53,6 +57,18 @@
             {
               "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
               "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-feature android:name=\"android.hardware.location.gps\" />",
+              "count": 1
             }
           ],
           "application": [
@@ -64,6 +80,16 @@
           "/manifest": [
             {
               "xml": "<uses-feature android:name=\"android.hardware.telephony\" android:required=\"false\" />",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "config.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<feature name=\"RequestLocationAccuracy\"><param name=\"android-package\" value=\"cordova.plugin.RequestLocationAccuracy\" /></feature>",
               "count": 1
             }
           ]
@@ -85,6 +111,12 @@
       "PACKAGE_NAME": "io.itlh.firstapp"
     },
     "cordova-sms-plugin": {
+      "PACKAGE_NAME": "io.itlh.firstapp"
+    },
+    "cordova-plugin-request-location-accuracy": {
+      "PACKAGE_NAME": "io.itlh.firstapp"
+    },
+    "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "io.itlh.firstapp"
     }
   },
@@ -214,6 +246,28 @@
       "clobbers": [
         "window.sms"
       ]
+    },
+    {
+      "id": "cordova-plugin-request-location-accuracy.RequestLocationAccuracy",
+      "file": "plugins/cordova-plugin-request-location-accuracy/www/android/RequestLocationAccuracy.js",
+      "pluginId": "cordova-plugin-request-location-accuracy",
+      "clobbers": [
+        "cordova.plugins.locationAccuracy"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.geolocation",
+      "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "navigator.geolocation"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.PositionError",
+      "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "runs": true
     }
   ],
   "plugin_metadata": {
@@ -221,6 +275,8 @@
     "cordova-plugin-contacts": "3.0.1",
     "cordova-plugin-fingerprint-aio": "1.5.0",
     "cordova-plugin-camera": "4.0.3",
-    "cordova-sms-plugin": "1.0.0"
+    "cordova-sms-plugin": "1.0.0",
+    "cordova-plugin-request-location-accuracy": "2.2.3",
+    "cordova-plugin-geolocation": "4.0.1"
   }
 }

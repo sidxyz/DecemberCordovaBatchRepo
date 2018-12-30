@@ -3,8 +3,8 @@ var baseUrl = 'https://006b4bdc.ngrok.io';
 var contentOfSecurityPolicy = `default-src 'self' 
  `+baseUrl+` 
  data: gap: ms-appdata: https://ssl.gstatic.com 'unsafe-eval';
- style-src 'self' 'unsafe-inline'; 
- media-src *; `;
+ style-src 'self' 'unsafe-inline'; `;
+//  media-src *; `;
 
 localStorage.setItem('baseUrl',baseUrl);
 localStorage.setItem('contentSecurityPolicy',contentOfSecurityPolicy);
